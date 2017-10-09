@@ -1,0 +1,7 @@
+*.png
+*.jpg
+*.pyc
+*.db
+*.zip
+output/
+testfolder/
