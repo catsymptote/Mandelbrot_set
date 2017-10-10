@@ -1,0 +1,8 @@
+# depslib dependency file v1.0
+1507593718 source:d:\projects\python\mandelbrot_set\version_2\pythonmandelbrotcpp\main.cpp
+	"main.h"
+	<string>
+
+1507593749 d:\projects\python\mandelbrot_set\version_2\pythonmandelbrotcpp\main.h
+	<windows.h>
+

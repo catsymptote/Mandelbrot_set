@@ -1,0 +1,5 @@
+EXPORTS
+    array_test @1
+    csum_float @2
+    if_true @3
+    sum_int @4

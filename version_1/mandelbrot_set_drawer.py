@@ -1,7 +1,8 @@
-import complex_maths
-import grapher
 import sys
 import time
+
+from version_1 import complex_maths
+from version_1 import grapher
 
 #l_complex_number = [0, 0]   # a, b: a+ib
 
@@ -18,15 +19,13 @@ def mandelbrot_function(c_z, c_c):
     return output
 
 
-def point_lister(l_window_size, l_plane_size):
+def point_lister(l_window_size, l_plane_size, runs):
     ##  l_window_size is the pixel count
     ##      [i_x_pixel, i_y_pixel]
     ##  l_plane_size is the coord size of the represented field:
     ##      [x_start, y_start, x_size, y_size]
     ##  l_2D_plane is a 2D plane of a list of the real and imaginary parts of a complex number.
     ##  I.e. listX<listY<listComplex>>
-    
-    runs = 100   # Max amount of runs of the function
 
     i_x_pixel   = l_window_size[0]
     i_y_pixel   = l_window_size[1]
@@ -102,6 +101,7 @@ def coord_finder(i_pix, i_this_pix, d_min, d_max):
 
 
 # Test
+"""
 l_window_size = [2048, 2048]    # pixel image size
 l_plane_size = [-2, -2, 4, 4]   # -2 and 4 up in x and y in the complex plane
 b_mandel_list = point_lister(
@@ -113,6 +113,7 @@ grapher.plane_grapher(
     l_window_size,     
     l_plane_size
 )
+"""
 
 # Tests
 #print(complex_maths.complex_add([3, 4], [1, 7]))
