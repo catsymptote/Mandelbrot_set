@@ -85,11 +85,12 @@ def point_lister(l_window_size, l_plane_size, runs):
             #print(res)
             #print("--")
             #print(complex_maths.complex_length(res))
-        print(y)
+        # print(y)   # Show how many rows are compelted (rudimentary progress bar)
         sys.stdout.flush()
-    print("-----")
-    print("True: " + str(trues))
-    print("False: " + str(falses))
+    #print("-----")
+    #print("True: " + str(trues))
+    #rint("False: " + str(falses))
+    print("True/False ratio:\t" + str(trues / falses))
     return lB_2D_plane
 
 
