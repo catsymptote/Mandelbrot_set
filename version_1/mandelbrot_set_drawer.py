@@ -4,22 +4,22 @@ import time
 from version_1 import complex_maths
 from version_1 import grapher
 
-#l_complex_number = [0, 0]   # a, b: a+ib
+
 
 def mandelbrot_function(c_z, c_c):
-    #if(runs >= 0):
-    #    runs -= 1
-    #else:
-    #    return (c_z^2 + c_c)
-    c_sq_z  = complex_maths.complex_square(c_z)
-    output  = complex_maths.complex_add(c_sq_z, c_c)
-    #print(c_sq_z)
-    #print(c_c)
-    #print("-----")
+    #c_sq_z  = complex_maths.complex_square(c_z)
+    #output  = complex_maths.complex_add(c_sq_z, c_c)
+
+    output = complex_maths.complex_add(
+        complex_maths.complex_square(c_z),
+        c_c
+    )
+
     return output
 
 
-def point_lister(l_window_size, l_plane_size, runs):
+def point_lister(l_window_size, l_plane_size, iterations):
+    ##  Ignore maybe?
     ##  l_window_size is the pixel count
     ##      [i_x_pixel, i_y_pixel]
     ##  l_plane_size is the coord size of the represented field:
@@ -52,8 +52,6 @@ def point_lister(l_window_size, l_plane_size, runs):
 
     for y in range(i_y_pixel):
         for x in range(i_x_pixel):
-            
-
             x_point = coord_finder(
                 i_x_pixel,
                 x,
@@ -68,15 +66,22 @@ def point_lister(l_window_size, l_plane_size, runs):
             )
             #print("x_point:\t" + str(x_point) + ",\t\ty_point:\t" + str(y_point))
             #print("x: " + str(x) + ",\ty:" + str(y))
-            
-            res = [0, 0]
-            for i in range(runs):
+            c_c = [x_point, y_point]
+            c_z = c_c
+            for i in range(iterations):
                 #print(str(x) + ":" + str(y) + " :" + str(i) + " -> " + str(res))
-                res = complex_maths.complex_add(res, mandelbrot_function(res, [x_point, y_point]))
-                if(res[0] > 3 or res[1] > 3):
+                #c_z = complex_maths.complex_add(
+                #    mandelbrot_function(c_z, c_c),  # z_n+1
+                #    c_z                             # z_n
+                #    #c_z,                            # z
+                #    #mandelbrot_function(c_z, c_c)   # c
+                #)   
+                c_z = mandelbrot_function(c_z, c_c)
+
+                if(c_z[0] > 2 or c_z[1] > 2):
                     break
             
-            if(complex_maths.complex_length(res) > 2):
+            if(complex_maths.complex_length(c_z) >= 2):
                 lB_2D_plane[x][y] = True
                 trues += 1
             else:
@@ -86,7 +91,7 @@ def point_lister(l_window_size, l_plane_size, runs):
             #print("--")
             #print(complex_maths.complex_length(res))
         # print(y)   # Show how many rows are compelted (rudimentary progress bar)
-        sys.stdout.flush()
+        #sys.stdout.flush()
     #print("-----")
     #print("True: " + str(trues))
     #rint("False: " + str(falses))
@@ -95,9 +100,16 @@ def point_lister(l_window_size, l_plane_size, runs):
 
 
 def coord_finder(i_pix, i_this_pix, d_min, d_max):
-    pix_frac = i_this_pix / (i_pix -1)
-    pos = pix_frac * (d_max - d_min) + d_min
-    #print(pos)
+    # Pixel number 500 / total of 1000 pixels = 1/2.
+    # -2 + (1/2)(width of zoom 4) = -2 + 1/2*4 = 0.
+
+    # Pixel 600/900 = 2/3
+    # -2 + (2/3)(3) = 0
+
+    # Pixel 300/900 = 1/3
+    # -2 + (1/3)(3) = -1
+    pix_frac = i_this_pix / (i_pix -1)      
+    pos = d_min + pix_frac*(d_max - d_min)  
     return pos
 
 

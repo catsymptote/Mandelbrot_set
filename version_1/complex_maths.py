@@ -3,6 +3,7 @@
 ######################################
 
 
+from math import *
 from math import exp, expm1
 
 
@@ -24,5 +25,6 @@ def complex_square(l_complex):
     return l_result
 
 def complex_length(l_complex):
-    output = (l_complex[0]**2 + l_complex[1]**2)**0.5
+    #output = (l_complex[0]**2 + l_complex[1]**2)**0.5
+    output = sqrt(l_complex[0]**2 + l_complex[1]**2)
     return output
