@@ -1,7 +1,7 @@
 from PIL import Image
 
 
-def plane_grapher(lB_2D_points, l_window_size, l_plane_size):
+def plane_grapher(lB_2D_points, l_window_size, l_plane_size):#, i_iterations):
     i_x_pixel   = l_window_size[0]
     i_y_pixel   = l_window_size[1]
 
@@ -11,6 +11,13 @@ def plane_grapher(lB_2D_points, l_window_size, l_plane_size):
     d_y_size    = l_plane_size[3]
 
     # Create image
+    """
+    img_path = "img/"
+        + str(i_x_pixel) + "x" + str(i_y_pixel) + ", ["
+        + str(d_x_min) + "," + str(d_y_min) + "] - ["
+        + str(d_x_min+d_x_size) + "," + str(d_y_min+d_y_size) + "]"
+        + str(i_iterations) + ".png"
+    """
     img_path = "img/mep.png"
     img = Image.new('RGB', (i_x_pixel, i_y_pixel), (127, 127, 127))
     pixels = img.load()

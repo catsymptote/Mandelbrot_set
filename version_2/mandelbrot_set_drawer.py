@@ -7,8 +7,8 @@ from version_1 import grapher
 #l_complex_number = [0, 0]   # a, b: a+ib
 
 def mandelbrot_function(c_z, c_c):
-    #if(runs >= 0):
-    #    runs -= 1
+    #if(i_iterations >= 0):
+    #    i_iterations -= 1
     #else:
     #    return (c_z^2 + c_c)
     c_sq_z  = complex_maths.complex_square(c_z)
@@ -19,7 +19,7 @@ def mandelbrot_function(c_z, c_c):
     return output
 
 
-def point_lister(l_window_size, l_plane_size, runs):
+def point_lister(l_window_size, l_plane_size, i_iterations):
     ##  l_window_size is the pixel count
     ##      [i_x_pixel, i_y_pixel]
     ##  l_plane_size is the coord size of the represented field:
@@ -70,7 +70,7 @@ def point_lister(l_window_size, l_plane_size, runs):
             #print("x: " + str(x) + ",\ty:" + str(y))
             
             res = [0, 0]
-            for i in range(runs):
+            for i in range(i_iterations):
                 #print(str(x) + ":" + str(y) + " :" + str(i) + " -> " + str(res))
                 res = complex_maths.complex_add(res, mandelbrot_function(res, [x_point, y_point]))
                 if(res[0] > 3 or res[1] > 3):
@@ -85,11 +85,12 @@ def point_lister(l_window_size, l_plane_size, runs):
             #print(res)
             #print("--")
             #print(complex_maths.complex_length(res))
-        print(y)
+        # print(y)   # Show how many rows are compelted (rudimentary progress bar)
         sys.stdout.flush()
-    print("-----")
-    print("True: " + str(trues))
-    print("False: " + str(falses))
+    #print("-----")
+    #print("True: " + str(trues))
+    #rint("False: " + str(falses))
+    print("True/False ratio:\t" + str(trues / falses))
     return lB_2D_plane
 
 
