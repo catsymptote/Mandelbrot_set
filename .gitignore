@@ -5,6 +5,8 @@
 *.zip
 output/
 testfolder/
+.vscode/
+*.gif
 
 *.o
 

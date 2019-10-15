@@ -39,7 +39,7 @@ def plane_grapher(lB_2D_points, l_window_size, l_plane_size, i_iterations, run_n
     #img.putdata(pixels)
     #print(pixels)
     img.save(img_path)
-    print("Imagecreated:\t" + img_path)
+    print("Image created:\t" + img_path)
     #img.show()
 
 
